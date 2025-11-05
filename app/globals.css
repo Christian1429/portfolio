@@ -4,21 +4,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1
-  var(--delay, 0ms);
-
-  @keyframes cell-ripple {
-    0% {
-      opacity: 0.4;
-    }
-    50% {
-      opacity: 0.8;
-    }
-    100% {
-      opacity: 0.4;
-    }
-  }
-
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -134,4 +119,33 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Ripple effect animation */
+@keyframes cell-ripple {
+  0% {
+    scale: 1;
+    opacity: 0.4;
+  }
+  50% {
+    scale: 0.85;
+    opacity: 0.9;
+  }
+  100% {
+    scale: 1;
+    opacity: 0.4;
+  }
+}
+
+.animate-cell-ripple {
+  animation: cell-ripple var(--duration, 500ms) ease-out var(--delay, 0ms);
+}
+
+/* 3D Transform and Perspective for CometCard */
+.perspective-distant {
+  perspective: 2000px;
+}
+
+.transform-3d {
+  transform-style: preserve-3d;
 }

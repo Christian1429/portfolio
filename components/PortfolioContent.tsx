@@ -1,12 +1,24 @@
-import {HeroSection} from '@/components/sections';
-import { AboutSection } from './sections/AboutSection';
+import {
+  HeroSection,
+  TestimonialsSection,
+  AboutSection,
+  SkillsSection,
+  ExperienceSection,
+  EducationSection,
+  ProjectsSection,
+  CertificationsSection,
+  AchievementsSection,
+  ServicesSection,
+  BlogSection,
+  ContactSection,
+} from '@/components/sections';
 
 async function PortfolioContent() {
   return (
     <>
       <HeroSection />
       <AboutSection />
-      {/* <TestimonialsSection />
+      <TestimonialsSection />
       <SkillsSection />
       <ExperienceSection />
       <EducationSection />
@@ -15,7 +27,7 @@ async function PortfolioContent() {
       <AchievementsSection />
       <ServicesSection />
       <BlogSection />
-      <ContactSection /> */}
+      <ContactSection />
     </>
   );
 }
