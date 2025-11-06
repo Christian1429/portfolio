@@ -13,6 +13,7 @@
     "@clerk/nextjs": "^6.34.2",
     "@openai/chatkit-react": "^1.2.0",
     "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-separator": "^1.1.8",
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tooltip": "^1.2.8",

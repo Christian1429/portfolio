@@ -47,10 +47,10 @@ export async function TestimonialsSection() {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Client Testimonials
+            Project previews
           </h2>
           <p className="text-xl text-muted-foreground">
-            What people say about working with me
+            A sight into my projects
           </p>
         </div>
 

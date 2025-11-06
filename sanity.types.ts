@@ -639,6 +639,16 @@ export type SanityAssetSourceData = {
 
 export type AllSanitySchemaTypes = Navigation | SiteSettings | Contact | Service | Blog | Achievement | Certification | Testimonial | Education | Experience | Skill | Project | Profile | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: ./components/FloatingDock.tsx
+// Variable: NAVIGATION_QUERY
+// Query: *[_type == "navigation"] | order(order asc){    title,    href,    icon,    isExternal    }
+export type NAVIGATION_QUERYResult = Array<{
+  title: string | null;
+  href: string | null;
+  icon: string | null;
+  isExternal: boolean | null;
+}>;
+
 // Source: ./components/chat/ChatWrapper.tsx
 // Variable: CHAT_PROFILE_QUERY
 // Query: *[_id == "singleton-profile"][0]{    _id,    _type,    _createdAt,    _updatedAt,    _rev,    firstName,    lastName,    headline,    shortBio,    email,    phone,    location,    availability,    socialLinks,    yearsOfExperience,    profileImage  }
@@ -1425,6 +1435,7 @@ export type TESTIMONIALS_QUERYResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
+    "*[_type == \"navigation\"] | order(order asc){\n    title,\n    href,\n    icon,\n    isExternal\n    }": NAVIGATION_QUERYResult;
     "*[_id == \"singleton-profile\"][0]{\n    _id,\n    _type,\n    _createdAt,\n    _updatedAt,\n    _rev,\n    firstName,\n    lastName,\n    headline,\n    shortBio,\n    email,\n    phone,\n    location,\n    availability,\n    socialLinks,\n    yearsOfExperience,\n    profileImage\n  }": CHAT_PROFILE_QUERYResult;
     "*[_id == \"singleton-profile\"][0]{\n  firstName,\n  lastName,\n  fullBio,\n  yearsOfExperience,\n  stats,\n  email,\n  phone,\n  location\n}": ABOUT_QUERYResult;
     "*[_type == \"achievement\"] | order(date desc){\n  title,\n  type,\n  issuer,\n  date,\n  description,\n  image,\n  url,\n  featured,\n  order\n}": ACHIEVEMENTS_QUERYResult;
