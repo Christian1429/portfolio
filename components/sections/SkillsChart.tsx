@@ -86,8 +86,8 @@ export function SkillsChart({ skills }: SkillsChartProps) {
               <ChartContainer
                 id={`skills-chart-${category}`}
                 config={chartConfig}
-                className="w-full"
-                style={{ height: `${chartHeight}px` }}
+                className="w-full aspect-auto min-h-0"
+                style={{ height: `${chartHeight}px`, minWidth: 0 }}
               >
                 <BarChart
                   accessibilityLayer

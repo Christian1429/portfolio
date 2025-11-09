@@ -5,28 +5,28 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 
-type Testimonial = {
+type DemoView = {
   quote: string;
   name: string;
   designation: string;
   src: string;
   companyLogo?: string;
 };
-export const AnimatedTestimonials = ({
-  testimonials,
+export const AnimatedDemoView = ({
+  demoviews,
   autoplay = false,
 }: {
-  testimonials: Testimonial[];
+  demoviews: DemoView[];
   autoplay?: boolean;
 }) => {
   const [active, setActive] = useState(0);
 
   const handleNext = useCallback(() => {
-    setActive((prev) => (prev + 1) % testimonials.length);
-  }, [testimonials.length]);
+    setActive((prev) => (prev + 1) % demoviews.length);
+  }, [demoviews.length]);
 
   const handlePrev = () => {
-    setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setActive((prev) => (prev - 1 + demoviews.length) % demoviews.length);
   };
 
   const isActive = (index: number) => {
@@ -52,9 +52,9 @@ export const AnimatedTestimonials = ({
         <div>
           <div className="relative h-80 w-full">
             <AnimatePresence>
-              {testimonials.map((testimonial, index) => (
+              {demoviews.map((demoview, index) => (
                 <motion.div
-                  key={`${testimonial.name}-${index}`}
+                  key={`${demoview.name}-${index}`}
                   initial={{
                     opacity: 0,
                     scale: 0.9,
@@ -68,7 +68,7 @@ export const AnimatedTestimonials = ({
                     rotate: isActive(index) ? 0 : getRotation(index),
                     zIndex: isActive(index)
                       ? 40
-                      : testimonials.length + 2 - index,
+                      : demoviews.length + 2 - index,
                     y: isActive(index) ? [0, -80, 0] : 0,
                   }}
                   exit={{
@@ -84,10 +84,10 @@ export const AnimatedTestimonials = ({
                   className="absolute inset-0 origin-bottom"
                 >
                   <Image
-                    src={testimonial.src}
-                    alt={testimonial.name}
-                    width={500}
-                    height={500}
+                    src={demoview.src}
+                    alt={demoview.name}
+                    width={800}
+                    height={800}
                     draggable={false}
                     className="h-full w-full rounded-3xl object-cover object-center"
                   />
@@ -118,11 +118,11 @@ export const AnimatedTestimonials = ({
           >
             <div className="flex items-center gap-3 mb-2">
               <h3 className="text-2xl font-bold text-black dark:text-white">
-                {testimonials[active].name}
+                {demoviews[active].name}
               </h3>
-              {testimonials[active].companyLogo && (
+              {demoviews[active].companyLogo && (
                 <Image
-                  src={testimonials[active].companyLogo}
+                  src={demoviews[active].companyLogo}
                   alt="Company logo"
                   width={32}
                   height={32}
@@ -131,10 +131,10 @@ export const AnimatedTestimonials = ({
               )}
             </div>
             <p className="text-sm text-gray-500 dark:text-neutral-500">
-              {testimonials[active].designation}
+              {demoviews[active].designation}
             </p>
             <motion.p className="mt-8 text-lg text-gray-500 dark:text-neutral-300">
-              {testimonials[active].quote.split(' ').map((word, index) => (
+              {demoviews[active].quote.split(' ').map((word, index) => (
                 <motion.span
                   key={`${active}-word-${index}-${word}`}
                   initial={{
@@ -164,7 +164,7 @@ export const AnimatedTestimonials = ({
               type="button"
               onClick={handlePrev}
               className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
-              aria-label="Previous testimonial"
+              aria-label="Previous demo view"
             >
               <IconArrowLeft className="h-5 w-5 text-black transition-transform duration-300 group-hover/button:rotate-12 dark:text-neutral-400" />
             </button>
@@ -172,7 +172,7 @@ export const AnimatedTestimonials = ({
               type="button"
               onClick={handleNext}
               className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
-              aria-label="Next testimonial"
+              aria-label="Next demo view"
             >
               <IconArrowRight className="h-5 w-5 text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400" />
             </button>
@@ -182,3 +182,4 @@ export const AnimatedTestimonials = ({
     </div>
   );
 };
+

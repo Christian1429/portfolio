@@ -92,7 +92,7 @@ export type SiteSettings = {
   };
   showBlog?: boolean;
   showServices?: boolean;
-  showTestimonials?: boolean;
+  showDemoView?: boolean;
   googleAnalyticsId?: string;
   facebookPixelId?: string;
   twitterHandle?: string;
@@ -273,9 +273,9 @@ export type Certification = {
   order?: number;
 };
 
-export type Testimonial = {
+export type Demoview = {
   _id: string;
-  _type: "testimonial";
+  _type: "demoview";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -295,7 +295,7 @@ export type Testimonial = {
     alt?: string;
     _type: "image";
   };
-  testimonial?: string;
+  content?: string;
   rating?: number;
   date?: string;
   linkedinUrl?: string;
@@ -322,12 +322,10 @@ export type Education = {
   _updatedAt: string;
   _rev: string;
   institution?: string;
-  degree?: string;
   fieldOfStudy?: string;
   startDate?: string;
   endDate?: string;
   current?: boolean;
-  gpa?: string;
   description?: string;
   achievements?: Array<string>;
   logo?: {
@@ -637,7 +635,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Navigation | SiteSettings | Contact | Service | Blog | Achievement | Certification | Testimonial | Education | Experience | Skill | Project | Profile | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Navigation | SiteSettings | Contact | Service | Blog | Achievement | Certification | Demoview | Education | Experience | Skill | Project | Profile | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./components/FloatingDock.tsx
 // Variable: NAVIGATION_QUERY
@@ -714,6 +712,23 @@ export type CHAT_PROFILE_QUERYResult = {
   headline: null;
   shortBio: null;
   email: string | null;
+  phone: null;
+  location: null;
+  availability: null;
+  socialLinks: null;
+  yearsOfExperience: null;
+  profileImage: null;
+} | {
+  _id: string;
+  _type: "demoview";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  firstName: null;
+  lastName: null;
+  headline: null;
+  shortBio: null;
+  email: null;
   phone: null;
   location: null;
   availability: null;
@@ -911,23 +926,6 @@ export type CHAT_PROFILE_QUERYResult = {
   socialLinks: null;
   yearsOfExperience: number | null;
   profileImage: null;
-} | {
-  _id: string;
-  _type: "testimonial";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  firstName: null;
-  lastName: null;
-  headline: null;
-  shortBio: null;
-  email: null;
-  phone: null;
-  location: null;
-  availability: null;
-  socialLinks: null;
-  yearsOfExperience: null;
-  profileImage: null;
 } | null;
 
 // Source: ./components/sections/AboutSection.tsx
@@ -1117,17 +1115,53 @@ export type PROFILE_QUERYResult = {
   } | null;
 } | null;
 
+// Source: ./components/sections/DemoViewSection.tsx
+// Variable: DEMOVIEW_QUERY
+// Query: *[_type == "demoview" && featured == true] | order(order asc){  name,  position,  company,  content,  rating,  date,  avatar,  companyLogo,  linkedinUrl}
+export type DEMOVIEW_QUERYResult = Array<{
+  name: string | null;
+  position: string | null;
+  company: string | null;
+  content: string | null;
+  rating: number | null;
+  date: string | null;
+  avatar: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  companyLogo: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  linkedinUrl: string | null;
+}>;
+
 // Source: ./components/sections/EducationsSection.tsx
 // Variable: EDUCATION_QUERY
-// Query: *[_type == "education"] | order(endDate desc, startDate desc){  institution,  degree,  fieldOfStudy,  startDate,  endDate,  current,  gpa,  description,  achievements,  logo,  website,  order}
+// Query: *[_type == "education"] | order(endDate desc, startDate desc){  institution,  fieldOfStudy,  startDate,  endDate,  current,  description,  achievements,  logo,  website,  order}
 export type EDUCATION_QUERYResult = Array<{
   institution: string | null;
-  degree: string | null;
   fieldOfStudy: string | null;
   startDate: string | null;
   endDate: string | null;
   current: boolean | null;
-  gpa: string | null;
   description: string | null;
   achievements: Array<string> | null;
   logo: {
@@ -1393,44 +1427,6 @@ export type SKILLS_QUERYResult = Array<{
   color: string | null;
 }>;
 
-// Source: ./components/sections/TestimonialsSection.tsx
-// Variable: TESTIMONIALS_QUERY
-// Query: *[_type == "testimonial" && featured == true] | order(order asc){  name,  position,  company,  testimonial,  rating,  date,  avatar,  companyLogo,  linkedinUrl}
-export type TESTIMONIALS_QUERYResult = Array<{
-  name: string | null;
-  position: string | null;
-  company: string | null;
-  testimonial: string | null;
-  rating: number | null;
-  date: string | null;
-  avatar: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  } | null;
-  companyLogo: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  } | null;
-  linkedinUrl: string | null;
-}>;
-
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
@@ -1442,12 +1438,12 @@ declare module "@sanity/client" {
     "*[_type == \"blog\"] | order(publishedAt desc){\n  title,\n  slug,\n  excerpt,\n  category,\n  tags,\n  publishedAt,\n  readTime,\n  featuredImage\n}": BLOG_QUERYResult;
     "*[_type == \"certification\"] | order(issueDate desc){\n  name,\n  issuer,\n  issueDate,\n  expiryDate,\n  credentialId,\n  credentialUrl,\n  logo,\n  description,\n  skills[]->{name, category},\n  order\n}": CERTIFICATIONS_QUERYResult;
     "*[_id == \"singleton-profile\"][0]{\n  email,\n  phone,\n  location,\n  socialLinks\n}": PROFILE_QUERYResult;
-    "*[_type == \"education\"] | order(endDate desc, startDate desc){\n  institution,\n  degree,\n  fieldOfStudy,\n  startDate,\n  endDate,\n  current,\n  gpa,\n  description,\n  achievements,\n  logo,\n  website,\n  order\n}": EDUCATION_QUERYResult;
+    "*[_type == \"demoview\" && featured == true] | order(order asc){\n  name,\n  position,\n  company,\n  content,\n  rating,\n  date,\n  avatar,\n  companyLogo,\n  linkedinUrl\n}": DEMOVIEW_QUERYResult;
+    "*[_type == \"education\"] | order(endDate desc, startDate desc){\n  institution,\n  fieldOfStudy,\n  startDate,\n  endDate,\n  current,\n  description,\n  achievements,\n  logo,\n  website,\n  order\n}": EDUCATION_QUERYResult;
     "*[_type == \"experience\"] | order(startDate desc){\n  company,\n  position,\n  employmentType,\n  location,\n  startDate,\n  endDate,\n  current,\n  description,\n  responsibilities,\n  achievements,\n  technologies[]->{name, category},\n  companyLogo,\n  companyWebsite\n}": EXPERIENCE_QUERYResult;
     "*[_id == \"singleton-profile\"][0]{\n  firstName,\n  lastName,\n  headline,\n  headlineStaticText,\n  headlineAnimatedWords,\n  headlineAnimationDuration,\n  shortBio,\n  email,\n  phone,\n  location,\n  availability,\n  socialLinks,\n  yearsOfExperience,\n  profileImage\n}": HERO_QUERYResult;
     "*[_type == \"project\" && featured == true] | order(order asc)[0...6]{\n  title,\n  slug,\n  tagline,\n  category,\n  liveUrl,\n  githubUrl,\n  coverImage,\n  technologies[]->{name, category, color}\n}": PROJECTS_QUERYResult;
     "*[_type == \"service\"] | order(order asc, _createdAt desc){\n  title,\n  slug,\n  icon,\n  shortDescription,\n  fullDescription,\n  features,\n  technologies[]->{name, category},\n  deliverables,\n  pricing,\n  timeline,\n  featured,\n  order\n}": SERVICES_QUERYResult;
     "*[_type == \"skill\"] | order(category asc, order asc){\n  name,\n  category,\n  proficiency,\n  percentage,\n  yearsOfExperience,\n  color\n}": SKILLS_QUERYResult;
-    "*[_type == \"testimonial\" && featured == true] | order(order asc){\n  name,\n  position,\n  company,\n  testimonial,\n  rating,\n  date,\n  avatar,\n  companyLogo,\n  linkedinUrl\n}": TESTIMONIALS_QUERYResult;
   }
 }

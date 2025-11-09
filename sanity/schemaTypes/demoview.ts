@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'testimonial',
-  title: 'Testimonials',
+  name: 'demoview',
+  title: 'DemoView',
   type: 'document',
   fields: [
     defineField({
@@ -40,8 +40,8 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'testimonial',
-      title: 'Testimonial',
+      name: 'content',
+      title: 'Content',
       type: 'text',
       rows: 5,
       validation: (Rule) => Rule.required(),
@@ -74,7 +74,7 @@ export default defineType({
     }),
     defineField({
       name: 'featured',
-      title: 'Featured Testimonial',
+      title: 'Featured DemoView',
       type: 'boolean',
       description: 'Show on homepage',
       initialValue: false,
@@ -115,3 +115,4 @@ export default defineType({
     },
   ],
 });
+
