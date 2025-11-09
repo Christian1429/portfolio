@@ -42,9 +42,9 @@ export async function DemoViewSection() {
   }));
 
   return (
-    <section id="demoview" className="py-20 px-6">
+    <section id="demoview" className="py-20 px-6 min-h-[910px]">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-8">
+        <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Project previews
           </h2>
@@ -53,10 +53,7 @@ export async function DemoViewSection() {
           </p>
         </div>
 
-        <AnimatedDemoView
-          demoviews={formattedDemoViews}
-          autoplay={true}
-        />
+        <AnimatedDemoView demoviews={formattedDemoViews} autoplay={true} />
       </div>
     </section>
   );
