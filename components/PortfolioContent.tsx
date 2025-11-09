@@ -1,6 +1,6 @@
 import {
   HeroSection,
-  TestimonialsSection,
+  DemoViewSection,
   AboutSection,
   SkillsSection,
   ExperienceSection,
@@ -18,7 +18,7 @@ async function PortfolioContent() {
     <>
       <HeroSection />
       <AboutSection />
-      <TestimonialsSection />
+      <DemoViewSection />
       <SkillsSection />
       <ExperienceSection />
       <EducationSection />

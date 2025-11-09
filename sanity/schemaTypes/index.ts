@@ -11,7 +11,7 @@ import project from './project';
 import service from './service';
 import siteSettings from './siteSettings';
 import skill from './skill';
-import testimonial from './testimonial';
+import demoview from './demoview';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -20,7 +20,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     skill,
     experience,
     education,
-    testimonial,
+    demoview,
     certification,
     achievement,
     blog,

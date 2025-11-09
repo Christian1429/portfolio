@@ -92,7 +92,7 @@ export type SiteSettings = {
   };
   showBlog?: boolean;
   showServices?: boolean;
-  showTestimonials?: boolean;
+  showDemoView?: boolean;
   googleAnalyticsId?: string;
   facebookPixelId?: string;
   twitterHandle?: string;
@@ -273,9 +273,9 @@ export type Certification = {
   order?: number;
 };
 
-export type Testimonial = {
+export type DemoView = {
   _id: string;
-  _type: "testimonial";
+  _type: "demoview";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -295,7 +295,7 @@ export type Testimonial = {
     alt?: string;
     _type: "image";
   };
-  testimonial?: string;
+  content?: string;
   rating?: number;
   date?: string;
   linkedinUrl?: string;
@@ -637,7 +637,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Navigation | SiteSettings | Contact | Service | Blog | Achievement | Certification | Testimonial | Education | Experience | Skill | Project | Profile | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Navigation | SiteSettings | Contact | Service | Blog | Achievement | Certification | DemoView | Education | Experience | Skill | Project | Profile | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./components/FloatingDock.tsx
 // Variable: NAVIGATION_QUERY
@@ -913,7 +913,7 @@ export type CHAT_PROFILE_QUERYResult = {
   profileImage: null;
 } | {
   _id: string;
-  _type: "testimonial";
+  _type: "demoview";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -1393,14 +1393,14 @@ export type SKILLS_QUERYResult = Array<{
   color: string | null;
 }>;
 
-// Source: ./components/sections/TestimonialsSection.tsx
-// Variable: TESTIMONIALS_QUERY
-// Query: *[_type == "testimonial" && featured == true] | order(order asc){  name,  position,  company,  testimonial,  rating,  date,  avatar,  companyLogo,  linkedinUrl}
-export type TESTIMONIALS_QUERYResult = Array<{
+// Source: ./components/sections/DemoViewSection.tsx
+// Variable: DEMOVIEW_QUERY
+// Query: *[_type == "demoview" && featured == true] | order(order asc){  name,  position,  company,  content,  rating,  date,  avatar,  companyLogo,  linkedinUrl}
+export type DEMOVIEW_QUERYResult = Array<{
   name: string | null;
   position: string | null;
   company: string | null;
-  testimonial: string | null;
+  content: string | null;
   rating: number | null;
   date: string | null;
   avatar: {
@@ -1448,6 +1448,6 @@ declare module "@sanity/client" {
     "*[_type == \"project\" && featured == true] | order(order asc)[0...6]{\n  title,\n  slug,\n  tagline,\n  category,\n  liveUrl,\n  githubUrl,\n  coverImage,\n  technologies[]->{name, category, color}\n}": PROJECTS_QUERYResult;
     "*[_type == \"service\"] | order(order asc, _createdAt desc){\n  title,\n  slug,\n  icon,\n  shortDescription,\n  fullDescription,\n  features,\n  technologies[]->{name, category},\n  deliverables,\n  pricing,\n  timeline,\n  featured,\n  order\n}": SERVICES_QUERYResult;
     "*[_type == \"skill\"] | order(category asc, order asc){\n  name,\n  category,\n  proficiency,\n  percentage,\n  yearsOfExperience,\n  color\n}": SKILLS_QUERYResult;
-    "*[_type == \"testimonial\" && featured == true] | order(order asc){\n  name,\n  position,\n  company,\n  testimonial,\n  rating,\n  date,\n  avatar,\n  companyLogo,\n  linkedinUrl\n}": TESTIMONIALS_QUERYResult;
+    "*[_type == \"demoview\" && featured == true] | order(order asc){\n  name,\n  position,\n  company,\n  content,\n  rating,\n  date,\n  avatar,\n  companyLogo,\n  linkedinUrl\n}": DEMOVIEW_QUERYResult;
   }
 }

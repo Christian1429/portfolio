@@ -12,13 +12,6 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'degree',
-      title: 'Degree',
-      type: 'string',
-      description: "E.g., 'Bachelor of Science', 'Master of Computer Science'",
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: 'fieldOfStudy',
       title: 'Field of Study',
       type: 'string',
@@ -40,12 +33,6 @@ export default defineType({
       title: 'Currently Enrolled',
       type: 'boolean',
       initialValue: false,
-    }),
-    defineField({
-      name: 'gpa',
-      title: 'GPA',
-      type: 'string',
-      description: "E.g., '3.8/4.0'",
     }),
     defineField({
       name: 'description',
@@ -83,8 +70,8 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'degree',
-      subtitle: 'institution',
+      title: 'institution',
+      subtitle: 'fieldOfStudy',
       media: 'logo',
     },
   },

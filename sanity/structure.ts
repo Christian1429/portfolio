@@ -120,10 +120,10 @@ export const structure: StructureResolver = (S) =>
                 .child(S.documentTypeList('blog').title('Blog Posts')),
 
               S.listItem()
-                .title('Testimonials')
+                .title('DemoView')
                 .icon(CommentIcon)
-                .schemaType('testimonial')
-                .child(S.documentTypeList('testimonial').title('Testimonials')),
+                .schemaType('demoview')
+                .child(S.documentTypeList('demoview').title('DemoView')),
             ])
         ),
 

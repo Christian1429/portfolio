@@ -114,8 +114,8 @@ export default defineType({
       initialValue: true,
     }),
     defineField({
-      name: 'showTestimonials',
-      title: 'Show Testimonials Section',
+      name: 'showDemoView',
+      title: 'Show DemoView Section',
       type: 'boolean',
       initialValue: true,
     }),

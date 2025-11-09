@@ -469,7 +469,7 @@
         },
         "optional": true
       },
-      "showTestimonials": {
+      "showDemoView": {
         "type": "objectAttribute",
         "value": {
           "type": "boolean"
@@ -1716,7 +1716,7 @@
     }
   },
   {
-    "name": "testimonial",
+    "name": "demoview",
     "type": "document",
     "attributes": {
       "_id": {
@@ -1729,7 +1729,7 @@
         "type": "objectAttribute",
         "value": {
           "type": "string",
-          "value": "testimonial"
+          "value": "demoview"
         }
       },
       "_createdAt": {
@@ -1847,7 +1847,7 @@
         },
         "optional": true
       },
-      "testimonial": {
+      "content": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

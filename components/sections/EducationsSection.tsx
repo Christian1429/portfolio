@@ -8,12 +8,10 @@ import { sanityFetch } from '@/sanity/lib/live';
 const EDUCATION_QUERY =
   defineQuery(`*[_type == "education"] | order(endDate desc, startDate desc){
   institution,
-  degree,
   fieldOfStudy,
   startDate,
   endDate,
   current,
-  gpa,
   description,
   achievements,
   logo,
@@ -60,14 +58,14 @@ export async function EducationSection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Education</h2>
           <p className="text-xl text-muted-foreground">
-            My academic background
+            My background
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {education.map((edu) => (
             <div
-              key={`${edu.institution}-${edu.degree}-${edu.startDate}`}
+              key={`${edu.institution}-${edu.startDate}`}
               className="group relative bg-card border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
             >
               {/* Accent gradient bar */}
@@ -88,9 +86,6 @@ export async function EducationSection() {
                   )}
 
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-xl font-bold mb-1 line-clamp-2 group-hover:text-primary transition-colors">
-                      {edu.degree}
-                    </h3>
                     <p className="text-lg font-medium text-primary mb-1">
                       {edu.institution}
                     </p>
@@ -102,7 +97,7 @@ export async function EducationSection() {
                   </div>
                 </div>
 
-                {/* Date and GPA badges */}
+                {/* Date badge */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted text-sm">
                     <IconCalendar className="w-3.5 h-3.5" />
@@ -115,12 +110,6 @@ export async function EducationSection() {
                           : 'N/A'}
                     </span>
                   </div>
-                  {edu.gpa && (
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                      <IconAward className="w-3.5 h-3.5" />
-                      <span>GPA: {edu.gpa}</span>
-                    </div>
-                  )}
                 </div>
 
                 {/* Description */}
