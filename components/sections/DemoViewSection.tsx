@@ -4,7 +4,7 @@ import { urlFor } from '@/sanity/lib/image';
 import { sanityFetch } from '@/sanity/lib/live';
 
 const DEMOVIEW_QUERY =
-  defineQuery(`*[(_type == "demoview" || _type == "testimonial") && featured == true] | order(order asc){
+  defineQuery(`*[_type == "demoview" && featured == true] | order(order asc){
   name,
   position,
   company,
@@ -24,7 +24,6 @@ export async function DemoViewSection() {
   if (!demoviews || demoviews.length === 0) {
     return null;
   }
-
   // Map Sanity demoviews to AnimatedDemoView format
   const formattedDemoViews = demoviews.map((demoview: any) => ({
     quote: demoview.content || '',
@@ -34,8 +33,8 @@ export async function DemoViewSection() {
       : demoview.position || '',
     // Use avatar for the main image
     src: demoview.avatar
-      ? urlFor(demoview.avatar).width(500).height(500).url()
-      : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=500&auto=format&fit=crop',
+      ? urlFor(demoview.avatar).width(800).height(800).url()
+      : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop',
     // Pass company logo separately to show next to name
     companyLogo: demoview.companyLogo
       ? urlFor(demoview.companyLogo).width(32).height(32).url()

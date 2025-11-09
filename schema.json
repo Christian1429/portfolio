@@ -2002,13 +2002,6 @@
         },
         "optional": true
       },
-      "degree": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
       "fieldOfStudy": {
         "type": "objectAttribute",
         "value": {
@@ -2034,13 +2027,6 @@
         "type": "objectAttribute",
         "value": {
           "type": "boolean"
-        },
-        "optional": true
-      },
-      "gpa": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
         },
         "optional": true
       },
