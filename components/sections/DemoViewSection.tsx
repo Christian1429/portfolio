@@ -42,9 +42,9 @@ export async function DemoViewSection() {
   }));
 
   return (
-    <section id="demoview" className="py-20 px-6 min-h-[910px]">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center">
+    <section id="demoview" className="py-12 px-6 min-h-[920px] md:pb-8">
+      <div className="mx-auto max-w-6xl pb-0 mb-0">
+        <div className="text-center pb-0 mb-0">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Project previews
           </h2>
