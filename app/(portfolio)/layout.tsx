@@ -25,8 +25,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Portfolio Christian Lindberg',
-  description: 'Fullstack Developer Christian Lindberg',
+  title: 'Portfolio Christian Borgring',
+  description: 'Fullstack Developer Christian Borgring',
 };
 
 export default async function RootLayout({
